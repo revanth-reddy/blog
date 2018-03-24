@@ -9,9 +9,16 @@
     </head>
     <body>
     <div class="page-header">
-            <a href="{% url 'home' %}" ><img src="{% static 'images/home.png' %}" style="width:4vw;margin-left: 5%;"></a>
+         <span>   <a href="{% url 'home' %}" ><img src="{% static 'images/home.png' %}" style="width:4vw;margin-left: 5%;"></a>
         {% if user.is_authenticated %}
-            <a href="{% url 'post_new' %}" class="plus">Got a Question??? ask me !<span class="glyphicon glyphicon-plus"></span></a>
+            <h3 style="margin-left: 10vw;">Hello   {{request.user}} !</h3>
+            <a href="{% url 'post_new' %}" style="margin-left: 10%;font-size: 3rem;">Got a Question??? ask me ! </a>
+             <a href="{% url 'logout' %}"  style="margin-left: 40%;font-size: 3rem;">Logout</a>
+         </span>
+        {% else %}
+            <a href="{% url 'signup' %}" style="margin-left: 60%;font-size: 3rem;" >##Sign Up## </a>
+            <a href="{% url 'login' %}" style="margin-left: 5%;font-size: 3rem;" >**Log In**</a>
+            </span>
         {% endif %}
     </div>
     <div class="content container">

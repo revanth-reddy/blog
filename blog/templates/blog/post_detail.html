@@ -3,7 +3,7 @@
 {% block content %}
     <div class="post">
     	<h1>{{ post.title }}</h1>
-    	{% if user.is_authenticated %}
+    	{%  if user.is_authenticated and post.author == user  %}
         <a  style="float:right;" class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
         {% endif %}
         {% if post.published_date %}
@@ -12,5 +12,7 @@
             </div>
         {% endif %}
         <p>{{ post.text|linebreaksbr }}</p>
+        <p>By</p>
+        <h3>{{ post.author }}</h3>
     </div>
 {% endblock %}
